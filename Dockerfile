@@ -30,7 +30,7 @@ RUN mkdir ~/.vnc && \
 RUN mkdir ~/.fluxbox && \
     echo "[startup] {wine ~/mm/Mobatec\ Modeller.exe.exe}"> ~/.fluxbox/apps && \
     echo "[begin] (.-=:MENU:=-.)"> ~/.fluxbox/menu && \
-    echo "[exec] (Mobatec Modeller) {wine ~/mm/MObatec\ Modeller.exe}">> ~/.fluxbox/menu && \
+    echo "[exec] (Mobatec Modeller) {wine ~/mm/Mobatec\ Modeller.exe}">> ~/.fluxbox/menu && \
     echo "[end]">> ~/.fluxbox/menu && \
     openssl req -x509 -nodes -newkey rsa:2048 -keyout ~/novnc.pem -out ~/novnc.pem -days 3650 -subj "/C=US/ST=NY/L=NY/O=NY/OU=NY/CN=NY emailAddress=email@example.com"
 RUN mkdir ~/mm && \
