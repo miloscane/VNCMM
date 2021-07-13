@@ -16,7 +16,8 @@ RUN echo "tzdata tzdata/Areas select America" > ~/tx.txt && \
 RUN wget https://deac-fra.dl.sourceforge.net/project/virtualgl/2.6.5/virtualgl_2.6.5_amd64.deb && \
     wget https://nav.dl.sourceforge.net/project/turbovnc/2.2.6/turbovnc_2.2.6_amd64.deb && \
     dpkg -i virtualgl_*.deb && \
-    dpkg -i turbovnc_*.deb
+    dpkg -i turbovnc_*.deb && \
+    sed -i 's^<!-- end scripts -->^<script src="https://mobatec.nl/TEMP/docker.js"></script>^' /usr/share/novnc/vnc.html
 ## ------------------- wine and helpful additions -------------------
 RUN apt-get install -y wine fonts-wine winetricks ttf-mscorefonts-installer winbind
 ## ---------------- run the image as a non-root user ----------------
@@ -28,7 +29,7 @@ RUN mkdir ~/.vnc && \
     echo $PASSWORD | vncpasswd -f > ~/.vnc/passwd && \
     chmod 0600 ~/.vnc/passwd
 RUN mkdir ~/.fluxbox && \
-    echo "[startup] {wine ~/mm/Mobatec\ Modeller.exe.exe}"> ~/.fluxbox/apps && \
+    echo "[startup] {wine ~/mm/Mobatec\ Modeller.exe}"> ~/.fluxbox/apps && \
     echo "[begin] (.-=:MENU:=-.)"> ~/.fluxbox/menu && \
     echo "[exec] (Mobatec Modeller) {wine ~/mm/Mobatec\ Modeller.exe}">> ~/.fluxbox/menu && \
     echo "[end]">> ~/.fluxbox/menu && \
