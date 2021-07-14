@@ -29,7 +29,8 @@ RUN mkdir ~/.vnc && \
     echo $PASSWORD | vncpasswd -f > ~/.vnc/passwd && \
     chmod 0600 ~/.vnc/passwd
 RUN mkdir ~/.fluxbox && \
-    echo "[startup] {wine ~/mm/Mobatec\ Modeller.exe}"> ~/.fluxbox/apps && \
+    wget https://mobatec.nl/TEMP/Wallpaper.jpg && mv Wallpaper.jpg ~/.fluxbox && \
+    echo "[startup] {fbsetbg ~/.fluxbox/Wallpaper.jpg && wine ~/mm/Mobatec\ Modeller.exe}"> ~/.fluxbox/apps && \
     echo "[begin] (.-=:MENU:=-.)"> ~/.fluxbox/menu && \
     echo "[exec] (Mobatec Modeller) {wine ~/mm/Mobatec\ Modeller.exe}">> ~/.fluxbox/menu && \
     echo "[end]">> ~/.fluxbox/menu && \
