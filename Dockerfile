@@ -44,7 +44,7 @@ RUN mkdir ~/.vnc && \
     chmod 0600 ~/.vnc/passwd
 ## ------------------------ configure fluxbox -----------------------
 RUN mkdir ~/.fluxbox && cd ~/.fluxbox && \
-    wget https://mobatec.nl/TEMP/Wallpaper.jpg && \
+    wget https://mobatec.cloud/resources/vnc/Wallpaper.jpg && \
     echo "session.screen0.workspaces: 1"> ~/.fluxbox/init && \
     echo "session.screen0.toolbar.tools: clock, prevwindow, nextwindow, iconbar, systemtray">> ~/.fluxbox/init && \
     echo "# scroll on the desktop to change workspaces"> ~/.fluxbox/keys && \
@@ -55,6 +55,6 @@ RUN mkdir ~/.fluxbox && cd ~/.fluxbox && \
     openssl req -x509 -nodes -newkey rsa:2048 -keyout ~/novnc.pem -out ~/novnc.pem -days 3650 -subj "/C=US/ST=NY/L=NY/O=NY/OU=NY/CN=NY emailAddress=email@example.com"
 ## ----------------------- configure BlackBox -----------------------
 RUN mkdir ~/mm && cd ~/mm && \
-    wget https://mobatec.nl/TEMP/Mobatec-Modeller3.zip && \
-    unzip Mobatec-Modeller3.zip
+    wget https://mobatec.cloud/resources/vnc/Mobatec-Modeller.zip && \
+    unzip Mobatec-Modeller.zip
 CMD export PORT=$PORT; /opt/TurboVNC/bin/vncserver && websockify -D --web=/usr/share/novnc/ --cert=~/novnc.pem $PORT :5901 && while true; do fluxbox; done
